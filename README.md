@@ -13,8 +13,8 @@ Self-Driving Car Engineer Nanodegree Program
 ## Solution Approach
 
 1. We start at lane 1 (center lane) and speed 0.0 mph and accelerate incrementally.
-2. Maximum speed is (approximately) limited to 49.5 mph.
-3. Prediction:
+2. Maximum speed is (approximately) limited to 49.8 mph.
+3. Prediction:  (lines in the file `main.cpp`from `256` to `304`)
 
          * First we determine the lane in which our car is driving.
          * The lanes are indicated as follows:
@@ -30,13 +30,28 @@ Self-Driving Car Engineer Nanodegree Program
             2. Can I make a lane change to left lane?
             3. Can I make a lane change to right lane?
 
-4. Behaviour:
+4. Behaviour: (lines in the file `main.cpp`from `306` to `319`)
+
 Now, based on the prediction step, I determine the behavior. That is, if there a vehicle ahead of me that I am getting too close to, then I change the lane if possible or else I slow down and then accelerate again within the speed limit (of course).
 
-5. Trajectory generation:
+5. Trajectory generation: (lines in the file `main.cpp`from `327` to `434`)
+
 Now we have the target lane and target speed (or the accelaration) and we need to generate a trajectory for the car to follow.
 
 The idea is to create a list of widely spaced waypoints, evenly spaced at 30m. Later we will interpolate these waypoints with spline and fill it with more points that control the speed.
+
+There are 2 possibilities:
+
+1. If there is no previous trajectory, then I use the car as starting reference.
+2. If the previous trajectory has at least 2 points, then I use previous path's end point as reference state
+
+As a next step, I add 3 more points at 30m, 60m and 90m and then shift the car's reference angle to 0 degrees.
+
+Using the C++ spline tool, I interpolate the points to fill in the other waypoints. In total, I use 50 waypoints. We first fill in the points from the previous path and then fill in the remaining ones.
+
+I tried varying the number of waypoints significantly, but having too many points (say 1000) doesn't allow the car to respond quickly to the changes in the surroundings. Even using 100 waypoints had issues while changing lanes.
+
+
 
 
 
