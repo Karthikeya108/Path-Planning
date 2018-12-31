@@ -276,8 +276,8 @@ int main() {
 		    other_car_lane = 2;
 		  } 
 
-		  //if the car is not moving in our direction, ignore
-		  if (other_car_lane == -1) {
+		  //if the car is not moving in our direction or if the other car is not in the immediate next lane, ignore and continue - optimizing the code
+		  if ((other_car_lane == -1) || fabs(lane - other_car_lane) > 1) {
 		    continue;
 		  }
 
