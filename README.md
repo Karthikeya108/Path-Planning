@@ -70,7 +70,7 @@ Few snapshots from the simulator:
 
 <img src="./images/5.png">
 
-5. Smooth drive with 50 waypoints after 4.32 miles
+5. Smooth drive with 50 waypoints after 4.76 miles
 
 <img src="./images/4.png">
 
