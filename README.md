@@ -52,7 +52,27 @@ Using the C++ spline tool, I interpolate the points to fill in the other waypoin
 I tried varying the number of waypoints significantly, but having too many points (say 1000) doesn't allow the car to respond quickly to the changes in the surroundings. Even using 100 waypoints had issues while changing lanes.
 
 
+Few snapshots from the simulator:
 
+1. Begining of the drive
+
+<img src="./images/1.png">
+
+2. Moving to the left lane
+
+<img src="./images/2.png">
+
+3. Moving to the right lane
+
+<img src="./images/3.png">
+
+4. Problematic drive with 1000 waypoints
+
+<img src="./images/5.png">
+
+5. Smooth drive with 50 waypoints after 4.32 miles
+
+<img src="./images/4.png">
 
 
 ## Miscellanious details   
