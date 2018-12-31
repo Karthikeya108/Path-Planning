@@ -15,6 +15,9 @@ using namespace std;
 // for convenience
 using json = nlohmann::json;
 
+const double MAXSPEED = 49.8;
+const int NUM_WAYPOINTS = 50;
+
 // For converting back and forth between radians and degrees.
 constexpr double pi() { return M_PI; }
 double deg2rad(double x) { return x * pi() / 180; }
@@ -263,7 +266,7 @@ int main() {
 		  move_right = false;
 		} 
 
-		// Prediction - chech the current position and predict the future position of other cars
+		// Prediction - check the current position and predict the future position of other cars
 		bool too_close = false;
 		for (int i=0; i<sensor_fusion.size(); i++) {
 		  float d = sensor_fusion[i][6];
@@ -310,7 +313,7 @@ int main() {
 		  } else {
 		    ref_vel -= .224;  // if lane change is not possible than slow down
 		  }
-		} else if(ref_vel < 49.5) 
+		} else if(ref_vel < MAXSPEED) 
 		{
 		  ref_vel += .224;    // if slower than speed limit, accelerate
 		}
@@ -408,8 +411,8 @@ int main() {
 		
 		double x_add_on = 0;
 
-		// fill up the rest of our path planner after filling it with previous points, here we will always output 50 points
-		for (int i = 1; i <= 50-prev_size; i++) {
+		// fill up the rest of our path planner after filling it with previous points, here we will always output NUM_WAYPOINTS (50) points
+		for (int i = 1; i <= NUM_WAYPOINTS-prev_size; i++) {
                   double N = target_dist/(0.02*ref_vel/2.24);
 		  double x_point = x_add_on + target_x/N;
 		  double y_point = s(x_point);
