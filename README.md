@@ -16,7 +16,7 @@ Self-Driving Car Engineer Nanodegree Program
 2. Maximum speed is (approximately) limited to 49.8 mph.
 3. Prediction:  (lines in the file `main.cpp`from `256` to `304`)
 
-         * First we determine the lane in which our car is driving.
+         * First I determine the lane in which our car is driving.
          * The lanes are indicated as follows:
             - Left lane = 0
             - Center lane = 1
@@ -70,7 +70,7 @@ Few snapshots from the simulator:
 
 <img src="./images/5.png">
 
-5. Smooth drive with 50 waypoints after 4.76 miles
+5. Smooth drive with 50 waypoints, even after 4.76 miles
 
 <img src="./images/4.png">
 
